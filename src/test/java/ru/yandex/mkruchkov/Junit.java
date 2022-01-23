@@ -13,9 +13,7 @@ public class Junit {
             Test test = declaredMethod.getAnnotation(Test.class);
             if (test != null) {
                 try {
-                    {
-                        declaredMethod.invoke(SimpleTest.class.getConstructor().newInstance());
-                    }
+                    declaredMethod.invoke(SimpleTest.class.getConstructor().newInstance());
                 } catch (InvocationTargetException e) {
                     if (e.getCause() instanceof AssertionError) {
                         System.out.printf("Test %s failed : %s\n", declaredMethod.getName(), e.getCause().getMessage());
@@ -27,7 +25,6 @@ public class Junit {
                 }
                 System.out.printf("Test %s passed!\n", declaredMethod.getName());
             }
-
         }
     }
 }
